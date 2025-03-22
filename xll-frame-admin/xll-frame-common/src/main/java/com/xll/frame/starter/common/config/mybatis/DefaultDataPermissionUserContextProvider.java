@@ -10,10 +10,13 @@ import com.xll.frame.starter.extension.data.permission.core.model.UserContext;
 import java.util.stream.Collectors;
 
 /**
- * 数据权限用户上下文提供者
- *
- * @author Charles7c
- * @since 2023/12/21 21:19
+ * 功能描述: <br>
+ * <p>
+ *  <数据权限用户上下文提供者>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 00:00
+ * @version 1.0.0
  */
 public class DefaultDataPermissionUserContextProvider implements DataPermissionUserContextProvider {
 

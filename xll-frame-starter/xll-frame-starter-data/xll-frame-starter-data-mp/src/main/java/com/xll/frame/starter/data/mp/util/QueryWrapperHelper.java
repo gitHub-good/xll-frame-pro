@@ -41,6 +41,16 @@ public class QueryWrapperHelper {
     private QueryWrapperHelper() {
     }
 
+    public static <T> void sort(QueryWrapper<T> queryWrapper, Sort sort) {
+        if (sort != null && !sort.isUnsorted()) {
+            for(Sort.Order order : sort) {
+                String property = order.getProperty();
+                queryWrapper.orderBy(true, order.isAscending(), CharSequenceUtil.toUnderlineCase(property));
+            }
+
+        }
+    }
+
     /**
      * 构建 QueryWrapper
      *

@@ -1,0 +1,97 @@
+package com.xll.frame.system.srv.controller.common;
+
+import cn.dev33.satoken.annotation.SaIgnore;
+import cn.hutool.core.lang.tree.Tree;
+import cn.hutool.core.util.StrUtil;
+import com.alicp.jetcache.anno.Cached;
+import com.xll.frame.starter.common.constant.CacheConstants;
+import com.xll.frame.starter.core.validation.ValidationUtils;
+import com.xll.frame.starter.extension.crud.core.model.query.SortQuery;
+import com.xll.frame.starter.extension.crud.core.model.resp.LabelValueResp;
+import com.xll.frame.starter.log.core.annotation.Log;
+import com.xll.frame.starter.system.domain.system.*;
+import com.xll.frame.starter.system.infrastructure.enums.OptionCategoryEnum;
+import com.xll.frame.starter.system.infrastructure.model.query.*;
+import com.xll.frame.starter.system.infrastructure.model.resp.FileUploadResp;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
+import org.dromara.x.file.storage.core.FileInfo;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+
+/**
+ * 功能描述: <br>
+ * <p>
+ *  <公共 API>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 01:49
+ * @version 1.0.0
+ */
+@Tag(name = "公共 API")
+@Log(ignore = true)
+@Validated
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/common")
+public class CommonController {
+
+    private final DeptService deptService;
+    private final MenuService menuService;
+    private final UserService userService;
+    private final RoleService roleService;
+    private final DictItemService dictItemService;
+    private final OptionService optionService;
+
+    @Operation(summary = "查询部门树", description = "查询树结构的部门列表")
+    @GetMapping("/tree/dept")
+    public List<Tree<Long>> listDeptTree(DeptQuery query, SortQuery sortQuery) {
+        return deptService.tree(query, sortQuery, true);
+    }
+
+    @Operation(summary = "查询菜单树", description = "查询树结构的菜单列表")
+    @GetMapping("/tree/menu")
+    public List<Tree<Long>> listMenuTree(MenuQuery query, SortQuery sortQuery) {
+        return menuService.tree(query, sortQuery, true);
+    }
+
+    @Operation(summary = "查询用户字典", description = "查询用户字典列表")
+    @GetMapping("/dict/user")
+    public List<LabelValueResp> listUserDict(UserQuery query, SortQuery sortQuery) {
+        return userService.listDict(query, sortQuery);
+    }
+
+    @Operation(summary = "查询角色字典", description = "查询角色字典列表")
+    @GetMapping("/dict/role")
+    public List<LabelValueResp> listRoleDict(RoleQuery query, SortQuery sortQuery) {
+        return roleService.listDict(query, sortQuery);
+    }
+
+    @Operation(summary = "查询字典", description = "查询字典列表")
+    @Parameter(name = "code", description = "字典编码", example = "notice_type", in = ParameterIn.PATH)
+    @GetMapping("/dict/{code}")
+    public List<LabelValueResp> listDict(@PathVariable String code) {
+        return dictItemService.listByDictCode(code);
+    }
+
+    @SaIgnore
+    @Operation(summary = "查询系统配置参数", description = "查询系统配置参数")
+    @GetMapping("/dict/option/site")
+    @Cached(key = "'SITE'", name = CacheConstants.OPTION_KEY_PREFIX)
+    public List<LabelValueResp<String>> listSiteOptionDict() {
+        OptionQuery optionQuery = new OptionQuery();
+        optionQuery.setCategory(OptionCategoryEnum.SITE.name());
+        return optionService.list(optionQuery)
+            .stream()
+            .map(option -> new LabelValueResp<>(option.getCode(), StrUtil.nullToDefault(option.getValue(), option
+                .getDefaultValue())))
+            .toList();
+    }
+}

@@ -1,19 +1,3 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system.impl;
 
 import cn.crane4j.annotation.ContainerMethod;
@@ -23,36 +7,39 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.alicp.jetcache.anno.CacheInvalidate;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.xll.frame.starter.common.constant.CacheConstants;
+import com.xll.frame.starter.common.constant.ContainerConstants;
+import com.xll.frame.starter.common.constant.SysConstants;
+import com.xll.frame.starter.common.context.RoleContext;
+import com.xll.frame.starter.common.context.UserContext;
+import com.xll.frame.starter.common.context.UserContextHolder;
+import com.xll.frame.starter.common.enums.DataScopeEnum;
+import com.xll.frame.starter.core.validation.CheckUtils;
+import com.xll.frame.starter.extension.crud.mp.service.BaseServiceImpl;
+import com.xll.frame.starter.system.domain.system.*;
+import com.xll.frame.starter.system.infrastructure.model.entity.RoleDO;
+import com.xll.frame.starter.system.infrastructure.model.query.RoleQuery;
+import com.xll.frame.starter.system.infrastructure.model.req.RoleReq;
+import com.xll.frame.starter.system.infrastructure.model.req.RoleUpdatePermissionReq;
+import com.xll.frame.starter.system.infrastructure.model.resp.MenuResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.role.RoleDetailResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.role.RoleResp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import top.continew.admin.common.constant.CacheConstants;
-import top.continew.admin.common.constant.ContainerConstants;
-import top.continew.admin.common.constant.SysConstants;
-import top.continew.admin.common.context.RoleContext;
-import top.continew.admin.common.context.UserContext;
-import top.continew.admin.common.context.UserContextHolder;
-import top.continew.admin.common.enums.DataScopeEnum;
-import top.continew.admin.system.mapper.RoleMapper;
-import top.continew.admin.system.model.entity.RoleDO;
-import top.continew.admin.system.model.query.RoleQuery;
-import top.continew.admin.system.model.req.RoleReq;
-import top.continew.admin.system.model.req.RoleUpdatePermissionReq;
-import top.continew.admin.system.model.resp.MenuResp;
-import top.continew.admin.system.model.resp.role.RoleDetailResp;
-import top.continew.admin.system.model.resp.role.RoleResp;
-import top.continew.admin.system.service.*;
-import top.continew.starter.core.validation.CheckUtils;
-import top.continew.starter.extension.crud.service.BaseServiceImpl;
+import com.xll.frame.starter.system.infrastructure.mapper.RoleMapper;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * 角色业务实现
- *
- * @author Charles7c
- * @since 2023/2/8 23:17
+ * 功能描述: <br>
+ * <p>
+ *  <角色业务实现>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 01:15
+ * @version 1.0.0
  */
 @Service
 @RequiredArgsConstructor

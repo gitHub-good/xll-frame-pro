@@ -1,19 +1,3 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system.impl;
 
 import cn.crane4j.annotation.AutoOperate;
@@ -24,28 +8,31 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.xll.frame.starter.common.constant.ContainerConstants;
+import com.xll.frame.starter.common.constant.SysConstants;
+import com.xll.frame.starter.core.validation.CheckUtils;
+import com.xll.frame.starter.data.mp.util.QueryWrapperHelper;
+import com.xll.frame.starter.extension.crud.core.model.query.PageQuery;
+import com.xll.frame.starter.extension.crud.mp.model.resp.PageResp;
+import com.xll.frame.starter.system.domain.system.UserRoleService;
+import com.xll.frame.starter.system.infrastructure.model.entity.UserRoleDO;
+import com.xll.frame.starter.system.infrastructure.model.query.RoleUserQuery;
+import com.xll.frame.starter.system.infrastructure.model.resp.role.RoleUserResp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import top.continew.admin.common.constant.ContainerConstants;
-import top.continew.admin.common.constant.SysConstants;
-import top.continew.admin.system.mapper.UserRoleMapper;
-import top.continew.admin.system.model.entity.UserRoleDO;
-import top.continew.admin.system.model.query.RoleUserQuery;
-import top.continew.admin.system.model.resp.role.RoleUserResp;
-import top.continew.admin.system.service.UserRoleService;
-import top.continew.starter.core.validation.CheckUtils;
-import top.continew.starter.data.mp.util.QueryWrapperHelper;
-import top.continew.starter.extension.crud.model.query.PageQuery;
-import top.continew.starter.extension.crud.model.resp.PageResp;
+import com.xll.frame.starter.system.infrastructure.mapper.UserRoleMapper;
 
 import java.util.List;
 
 /**
- * 用户和角色业务实现
- *
- * @author Charles7c
- * @since 2023/2/20 21:30
+ * 功能描述: <br>
+ * <p>
+ *  <用户和角色业务实现>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 01:22
+ * @version 1.0.0
  */
 @Service
 @RequiredArgsConstructor

@@ -1,46 +1,19 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.infrastructure.model.resp.role;
 
-import cn.crane4j.annotation.AssembleMethod;
-import cn.crane4j.annotation.ContainerMethod;
-import cn.crane4j.annotation.MappingType;
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.xll.frame.starter.common.enums.DataScopeEnum;
+import com.xll.frame.starter.common.model.resp.BaseDetailResp;
+import com.xll.frame.starter.file.excel.converter.ExcelBaseEnumConverter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import top.continew.admin.common.enums.DataScopeEnum;
-import top.continew.admin.common.model.resp.BaseDetailResp;
-import top.continew.admin.system.service.RoleDeptService;
-import top.continew.starter.file.excel.converter.ExcelBaseEnumConverter;
 
 import java.io.Serial;
 import java.util.List;
 
-/**
- * 角色详情信息
- *
- * @author Charles7c
- * @since 2023/2/1 22:19
- */
 @Data
 @ExcelIgnoreUnannotated
 @Schema(description = "角色详情信息")
-@AssembleMethod(key = "id", prop = ":deptIds", targetType = RoleDeptService.class, method = @ContainerMethod(bindMethod = "listDeptIdByRoleId", type = MappingType.ORDER_OF_KEYS))
 public class RoleDetailResp extends BaseDetailResp {
 
     @Serial

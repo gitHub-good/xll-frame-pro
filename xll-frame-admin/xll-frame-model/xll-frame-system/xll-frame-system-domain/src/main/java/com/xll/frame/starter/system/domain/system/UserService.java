@@ -1,41 +1,28 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system;
 
+import com.xll.frame.starter.data.mp.service.IService;
+import com.xll.frame.starter.extension.crud.core.service.BaseService;
+import com.xll.frame.starter.system.infrastructure.model.entity.UserDO;
+import com.xll.frame.starter.system.infrastructure.model.query.UserQuery;
+import com.xll.frame.starter.system.infrastructure.model.req.user.*;
+import com.xll.frame.starter.system.infrastructure.model.resp.user.UserDetailResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.user.UserImportParseResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.user.UserImportResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.user.UserResp;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.multipart.MultipartFile;
-import top.continew.admin.system.model.entity.UserDO;
-import top.continew.admin.system.model.query.UserQuery;
-import top.continew.admin.system.model.req.user.*;
-import top.continew.admin.system.model.resp.user.UserDetailResp;
-import top.continew.admin.system.model.resp.user.UserImportParseResp;
-import top.continew.admin.system.model.resp.user.UserImportResp;
-import top.continew.admin.system.model.resp.user.UserResp;
-import top.continew.starter.data.mp.service.IService;
-import top.continew.starter.extension.crud.service.BaseService;
 
 import java.io.IOException;
 import java.util.List;
 
 /**
- * 用户业务接口
- *
- * @author Charles7c
- * @since 2022/12/21 21:48
+ * 功能描述: <br>
+ * <p>
+ *  <用户业务接口>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 01:18
+ * @version 1.0.0
  */
 public interface UserService extends BaseService<UserResp, UserDetailResp, UserQuery, UserReq>, IService<UserDO> {
 

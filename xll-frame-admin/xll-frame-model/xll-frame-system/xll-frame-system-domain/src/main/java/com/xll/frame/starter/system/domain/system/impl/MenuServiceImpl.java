@@ -1,49 +1,36 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alicp.jetcache.anno.Cached;
+import com.xll.frame.starter.cache.redisson.util.RedisUtils;
+import com.xll.frame.starter.common.constant.CacheConstants;
+import com.xll.frame.starter.common.enums.DisEnableStatusEnum;
+import com.xll.frame.starter.core.constant.StringConstants;
+import com.xll.frame.starter.core.validation.CheckUtils;
+import com.xll.frame.starter.extension.crud.mp.service.BaseServiceImpl;
+import com.xll.frame.starter.system.domain.system.MenuService;
+import com.xll.frame.starter.system.infrastructure.enums.MenuTypeEnum;
+import com.xll.frame.starter.system.infrastructure.model.entity.MenuDO;
+import com.xll.frame.starter.system.infrastructure.model.query.MenuQuery;
+import com.xll.frame.starter.system.infrastructure.model.req.MenuReq;
+import com.xll.frame.starter.system.infrastructure.model.resp.MenuResp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import top.continew.admin.common.constant.CacheConstants;
-import top.continew.admin.common.enums.DisEnableStatusEnum;
-import top.continew.admin.system.enums.MenuTypeEnum;
-import top.continew.admin.system.mapper.MenuMapper;
-import top.continew.admin.system.model.entity.MenuDO;
-import top.continew.admin.system.model.query.MenuQuery;
-import top.continew.admin.system.model.req.MenuReq;
-import top.continew.admin.system.model.resp.MenuResp;
-import top.continew.admin.system.service.MenuService;
-import top.continew.starter.cache.redisson.util.RedisUtils;
-import top.continew.starter.core.constant.StringConstants;
-import top.continew.starter.core.validation.CheckUtils;
-import top.continew.starter.extension.crud.service.BaseServiceImpl;
+import com.xll.frame.starter.system.infrastructure.mapper.MenuMapper;
 
 import java.util.List;
 import java.util.Set;
 
 /**
- * 菜单业务实现
- *
- * @author Charles7c
- * @since 2023/2/15 20:30
+ * 功能描述: <br>
+ * <p>
+ *  <菜单业务实现>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 01:01
+ * @version 1.0.0
  */
 @Service
 @RequiredArgsConstructor

@@ -35,6 +35,9 @@
         <module>xll-frame-starter-auth</module>
         <module>xll-starter-mns</module>
         <module>xll-frame-starter-log</module>
+        <module>xll-frame-starter-cache/xll-frame-starter-cache-jetcache</module>
+        <module>xll-frame-starter-captcha</module>
+        <module>xll-frame-starter-captcha/xll-frame-starter-captcha-graphic</module>
     </modules>
 
 </project>

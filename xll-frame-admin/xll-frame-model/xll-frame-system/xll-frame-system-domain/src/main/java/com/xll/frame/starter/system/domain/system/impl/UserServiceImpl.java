@@ -1,19 +1,3 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
@@ -41,6 +25,37 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.xll.frame.starter.cache.redisson.util.RedisUtils;
+import com.xll.frame.starter.common.constant.CacheConstants;
+import com.xll.frame.starter.common.constant.SysConstants;
+import com.xll.frame.starter.common.context.UserContext;
+import com.xll.frame.starter.common.context.UserContextHolder;
+import com.xll.frame.starter.common.enums.DisEnableStatusEnum;
+import com.xll.frame.starter.common.enums.GenderEnum;
+import com.xll.frame.starter.common.service.CommonUserService;
+import com.xll.frame.starter.common.util.SecureUtils;
+import com.xll.frame.starter.core.constant.StringConstants;
+import com.xll.frame.starter.core.exception.BusinessException;
+import com.xll.frame.starter.core.util.SpringUtils;
+import com.xll.frame.starter.core.validation.CheckUtils;
+import com.xll.frame.starter.extension.crud.core.model.query.PageQuery;
+import com.xll.frame.starter.extension.crud.core.model.query.SortQuery;
+import com.xll.frame.starter.extension.crud.mp.model.resp.PageResp;
+import com.xll.frame.starter.extension.crud.mp.service.BaseServiceImpl;
+import com.xll.frame.starter.system.domain.auth.OnlineUserService;
+import com.xll.frame.starter.system.domain.system.*;
+import com.xll.frame.starter.system.infrastructure.enums.OptionCategoryEnum;
+import com.xll.frame.starter.system.infrastructure.model.entity.DeptDO;
+import com.xll.frame.starter.system.infrastructure.model.entity.RoleDO;
+import com.xll.frame.starter.system.infrastructure.model.entity.UserDO;
+import com.xll.frame.starter.system.infrastructure.model.entity.UserRoleDO;
+import com.xll.frame.starter.system.infrastructure.model.query.UserQuery;
+import com.xll.frame.starter.system.infrastructure.model.req.user.*;
+import com.xll.frame.starter.system.infrastructure.model.resp.user.UserDetailResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.user.UserImportParseResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.user.UserImportResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.user.UserResp;
+import com.xll.frame.starter.web.util.FileUploadUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -53,38 +68,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import top.continew.admin.auth.service.OnlineUserService;
-import top.continew.admin.common.constant.CacheConstants;
-import top.continew.admin.common.constant.SysConstants;
-import top.continew.admin.common.context.UserContext;
-import top.continew.admin.common.context.UserContextHolder;
-import top.continew.admin.common.enums.DisEnableStatusEnum;
-import top.continew.admin.common.enums.GenderEnum;
-import top.continew.admin.common.service.CommonUserService;
-import top.continew.admin.common.util.SecureUtils;
-import top.continew.admin.system.enums.OptionCategoryEnum;
-import top.continew.admin.system.mapper.UserMapper;
-import top.continew.admin.system.model.entity.DeptDO;
-import top.continew.admin.system.model.entity.RoleDO;
-import top.continew.admin.system.model.entity.UserDO;
-import top.continew.admin.system.model.entity.UserRoleDO;
-import top.continew.admin.system.model.query.UserQuery;
-import top.continew.admin.system.model.req.user.*;
-import top.continew.admin.system.model.resp.user.UserDetailResp;
-import top.continew.admin.system.model.resp.user.UserImportParseResp;
-import top.continew.admin.system.model.resp.user.UserImportResp;
-import top.continew.admin.system.model.resp.user.UserResp;
-import top.continew.admin.system.service.*;
-import top.continew.starter.cache.redisson.util.RedisUtils;
-import top.continew.starter.core.constant.StringConstants;
-import top.continew.starter.core.exception.BusinessException;
-import top.continew.starter.core.util.SpringUtils;
-import top.continew.starter.core.validation.CheckUtils;
-import top.continew.starter.extension.crud.model.query.PageQuery;
-import top.continew.starter.extension.crud.model.query.SortQuery;
-import top.continew.starter.extension.crud.model.resp.PageResp;
-import top.continew.starter.extension.crud.service.BaseServiceImpl;
-import top.continew.starter.web.util.FileUploadUtils;
+import com.xll.frame.starter.system.infrastructure.mapper.UserMapper;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -93,14 +77,17 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static top.continew.admin.system.enums.ImportPolicyEnum.*;
-import static top.continew.admin.system.enums.PasswordPolicyEnum.*;
+import static com.xll.frame.starter.system.domain.system.enums.PasswordPolicyEnum.*;
+import static com.xll.frame.starter.system.infrastructure.enums.ImportPolicyEnum.*;
 
 /**
- * 用户业务实现
- *
- * @author Charles7c
- * @since 2022/12/21 21:49
+ * 功能描述: <br>
+ * <p>
+ *  <用户业务实现>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 01:17
+ * @version 1.0.0
  */
 @Slf4j
 @Service

@@ -1,39 +1,26 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system;
 
-import top.continew.admin.common.context.RoleContext;
-import top.continew.admin.system.model.entity.RoleDO;
-import top.continew.admin.system.model.query.RoleQuery;
-import top.continew.admin.system.model.req.RoleReq;
-import top.continew.admin.system.model.req.RoleUpdatePermissionReq;
-import top.continew.admin.system.model.resp.role.RoleDetailResp;
-import top.continew.admin.system.model.resp.role.RoleResp;
-import top.continew.starter.data.mp.service.IService;
-import top.continew.starter.extension.crud.service.BaseService;
+import com.xll.frame.starter.common.context.RoleContext;
+import com.xll.frame.starter.data.mp.service.IService;
+import com.xll.frame.starter.extension.crud.core.service.BaseService;
+import com.xll.frame.starter.system.infrastructure.model.entity.RoleDO;
+import com.xll.frame.starter.system.infrastructure.model.query.RoleQuery;
+import com.xll.frame.starter.system.infrastructure.model.req.RoleReq;
+import com.xll.frame.starter.system.infrastructure.model.req.RoleUpdatePermissionReq;
+import com.xll.frame.starter.system.infrastructure.model.resp.role.RoleDetailResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.role.RoleResp;
 
 import java.util.List;
 import java.util.Set;
 
 /**
- * 角色业务接口
- *
- * @author Charles7c
- * @since 2023/2/8 23:15
+ * 功能描述: <br>
+ * <p>
+ *  <角色业务接口>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 01:13
+ * @version 1.0.0
  */
 public interface RoleService extends BaseService<RoleResp, RoleDetailResp, RoleQuery, RoleReq>, IService<RoleDO> {
 

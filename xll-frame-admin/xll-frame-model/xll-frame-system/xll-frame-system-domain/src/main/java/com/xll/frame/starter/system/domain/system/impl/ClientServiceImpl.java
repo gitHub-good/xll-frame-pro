@@ -1,45 +1,31 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.crypto.digest.DigestUtil;
+import com.xll.frame.starter.core.constant.StringConstants;
+import com.xll.frame.starter.core.validation.CheckUtils;
+import com.xll.frame.starter.extension.crud.mp.service.BaseServiceImpl;
+import com.xll.frame.starter.system.domain.auth.OnlineUserService;
+import com.xll.frame.starter.system.domain.system.ClientService;
+import com.xll.frame.starter.system.infrastructure.auth.model.query.OnlineUserQuery;
+import com.xll.frame.starter.system.infrastructure.model.entity.ClientDO;
+import com.xll.frame.starter.system.infrastructure.model.query.ClientQuery;
+import com.xll.frame.starter.system.infrastructure.model.req.ClientReq;
+import com.xll.frame.starter.system.infrastructure.model.resp.ClientResp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import top.continew.admin.auth.model.query.OnlineUserQuery;
-import top.continew.admin.auth.service.OnlineUserService;
-import top.continew.admin.system.mapper.ClientMapper;
-import top.continew.admin.system.model.entity.ClientDO;
-import top.continew.admin.system.model.query.ClientQuery;
-import top.continew.admin.system.model.req.ClientReq;
-import top.continew.admin.system.model.resp.ClientResp;
-import top.continew.admin.system.service.ClientService;
-import top.continew.starter.core.constant.StringConstants;
-import top.continew.starter.core.validation.CheckUtils;
-import top.continew.starter.extension.crud.service.BaseServiceImpl;
+import com.xll.frame.starter.system.infrastructure.mapper.ClientMapper;
 
 import java.util.List;
 
 /**
- * 客户端业务实现
- *
- * @author KAI
- * @author Charles7c
- * @since 2024/12/03 16:04
+ * 功能描述: <br>
+ * <p>
+ *  <客户端业务实现>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 00:52
+ * @version 1.0.0
  */
 @Service
 @RequiredArgsConstructor

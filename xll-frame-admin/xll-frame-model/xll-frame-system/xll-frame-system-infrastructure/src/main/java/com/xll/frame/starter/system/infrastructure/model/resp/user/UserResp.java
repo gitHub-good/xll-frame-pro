@@ -1,43 +1,21 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.infrastructure.model.resp.user;
 
 import cn.crane4j.annotation.Assemble;
 import cn.crane4j.core.executor.handler.ManyToManyAssembleOperationHandler;
+import com.xll.frame.starter.common.constant.ContainerConstants;
+import com.xll.frame.starter.common.context.UserContextHolder;
+import com.xll.frame.starter.common.enums.DisEnableStatusEnum;
+import com.xll.frame.starter.common.enums.GenderEnum;
+import com.xll.frame.starter.common.model.resp.BaseDetailResp;
+import com.xll.frame.starter.security.mask.annotation.JsonMask;
+import com.xll.frame.starter.security.mask.enums.MaskType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import top.continew.admin.common.constant.ContainerConstants;
-import top.continew.admin.common.context.UserContextHolder;
-import top.continew.admin.common.enums.DisEnableStatusEnum;
-import top.continew.admin.common.enums.GenderEnum;
-import top.continew.admin.common.model.resp.BaseDetailResp;
-import top.continew.starter.security.mask.annotation.JsonMask;
-import top.continew.starter.security.mask.enums.MaskType;
 
 import java.io.Serial;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * 用户信息
- *
- * @author Charles7c
- * @since 2023/2/20 21:08
- */
 @Data
 @Schema(description = "用户信息")
 @Assemble(key = "id", prop = ":roleIds", sort = 0, container = ContainerConstants.USER_ROLE_ID_LIST)

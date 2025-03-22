@@ -1,37 +1,22 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.infrastructure.model.query;
 
+import com.xll.frame.starter.common.enums.DisEnableStatusEnum;
+import com.xll.frame.starter.data.core.annotation.Query;
+import com.xll.frame.starter.data.core.enums.QueryType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import top.continew.admin.common.enums.DisEnableStatusEnum;
-import top.continew.starter.data.core.annotation.Query;
-import top.continew.starter.data.core.enums.QueryType;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * 客户端查询条件
- *
- * @author KAI
- * @author Charles7c
- * @since 2024/12/03 16:04
+ * 功能描述: <br>
+ * <p>
+ *  <客户端查询条件>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 00:35
+ * @version 1.0.0
  */
 @Data
 @Schema(description = "客户端查询条件")

@@ -1,19 +1,3 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system.impl;
 
 import cn.hutool.core.collection.CollUtil;
@@ -26,27 +10,30 @@ import cn.hutool.core.util.NumberUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.xll.frame.starter.core.constant.StringConstants;
+import com.xll.frame.starter.system.domain.system.DashboardService;
+import com.xll.frame.starter.system.domain.system.NoticeService;
+import com.xll.frame.starter.system.infrastructure.model.resp.dashboard.DashboardAccessTrendResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.dashboard.DashboardChartCommonResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.dashboard.DashboardNoticeResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.dashboard.DashboardOverviewCommonResp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import top.continew.admin.system.mapper.LogMapper;
-import top.continew.admin.system.model.resp.dashboard.DashboardAccessTrendResp;
-import top.continew.admin.system.model.resp.dashboard.DashboardChartCommonResp;
-import top.continew.admin.system.model.resp.dashboard.DashboardNoticeResp;
-import top.continew.admin.system.model.resp.dashboard.DashboardOverviewCommonResp;
-import top.continew.admin.system.service.DashboardService;
-import top.continew.admin.system.service.NoticeService;
-import top.continew.starter.core.constant.StringConstants;
+import com.xll.frame.starter.system.infrastructure.mapper.LogMapper;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
 /**
- * 仪表盘业务实现
- *
- * @author Charles7c
- * @since 2023/9/8 21:32
+ * 功能描述: <br>
+ * <p>
+ *  <仪表盘业务实现>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 00:52
+ * @version 1.0.0
  */
 @Service
 @RequiredArgsConstructor

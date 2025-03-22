@@ -1,34 +1,21 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system;
 
-import top.continew.admin.system.model.query.MessageQuery;
-import top.continew.admin.system.model.req.MessageReq;
-import top.continew.admin.system.model.resp.MessageResp;
-import top.continew.starter.extension.crud.model.query.PageQuery;
-import top.continew.starter.extension.crud.model.resp.PageResp;
+import com.xll.frame.starter.extension.crud.core.model.query.PageQuery;
+import com.xll.frame.starter.extension.crud.mp.model.resp.PageResp;
+import com.xll.frame.starter.system.infrastructure.model.query.MessageQuery;
+import com.xll.frame.starter.system.infrastructure.model.req.MessageReq;
+import com.xll.frame.starter.system.infrastructure.model.resp.MessageResp;
 
 import java.util.List;
 
 /**
- * 消息业务接口
- *
- * @author Bull-BCLS
- * @since 2023/10/15 19:05
+ * 功能描述: <br>
+ * <p>
+ *  <消息业务接口>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 01:10
+ * @version 1.0.0
  */
 public interface MessageService {
 

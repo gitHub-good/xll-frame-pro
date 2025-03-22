@@ -1,37 +1,24 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.infrastructure.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
+import com.xll.frame.starter.common.model.entity.BaseDO;
+import com.xll.frame.starter.system.infrastructure.enums.NoticeScopeEnum;
 import lombok.Data;
-import top.continew.admin.common.model.entity.BaseDO;
-import top.continew.admin.system.enums.NoticeScopeEnum;
 
 import java.io.Serial;
 import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * 公告实体
- *
- * @author Charles7c
- * @since 2023/8/20 10:55
+ * 功能描述: <br>
+ * <p>
+ *  <公告实体>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 00:33
+ * @version 1.0.0
  */
 @Data
 @TableName(value = "sys_notice", autoResultMap = true)

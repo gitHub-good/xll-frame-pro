@@ -1,19 +1,3 @@
-/*
- * Copyright (c) 2022-present Charles7c Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.xll.frame.starter.system.domain.system.impl;
 
 import cn.crane4j.annotation.AutoOperate;
@@ -23,34 +7,38 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.xll.frame.starter.common.enums.DisEnableStatusEnum;
+import com.xll.frame.starter.core.validation.CheckUtils;
+import com.xll.frame.starter.data.mp.util.QueryWrapperHelper;
+import com.xll.frame.starter.extension.crud.core.model.query.PageQuery;
+import com.xll.frame.starter.extension.crud.core.model.query.SortQuery;
+import com.xll.frame.starter.extension.crud.mp.model.resp.PageResp;
+import com.xll.frame.starter.file.excel.util.ExcelUtils;
+import com.xll.frame.starter.system.domain.system.LogService;
+import com.xll.frame.starter.system.infrastructure.model.entity.LogDO;
+import com.xll.frame.starter.system.infrastructure.model.query.LogQuery;
+import com.xll.frame.starter.system.infrastructure.model.resp.log.LogDetailResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.log.LogResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.log.LoginLogExportResp;
+import com.xll.frame.starter.system.infrastructure.model.resp.log.OperationLogExportResp;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import top.continew.admin.common.enums.DisEnableStatusEnum;
-import top.continew.admin.system.mapper.LogMapper;
-import top.continew.admin.system.model.entity.LogDO;
-import top.continew.admin.system.model.query.LogQuery;
-import top.continew.admin.system.model.resp.log.LogDetailResp;
-import top.continew.admin.system.model.resp.log.LogResp;
-import top.continew.admin.system.model.resp.log.LoginLogExportResp;
-import top.continew.admin.system.model.resp.log.OperationLogExportResp;
-import top.continew.admin.system.service.LogService;
-import top.continew.starter.core.validation.CheckUtils;
-import top.continew.starter.data.mp.util.QueryWrapperHelper;
-import top.continew.starter.extension.crud.model.query.PageQuery;
-import top.continew.starter.extension.crud.model.query.SortQuery;
-import top.continew.starter.extension.crud.model.resp.PageResp;
-import top.continew.starter.file.excel.util.ExcelUtils;
+import com.xll.frame.starter.system.infrastructure.mapper.LogMapper;
+
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * 系统日志业务实现
- *
- * @author Charles7c
- * @since 2022/12/23 20:12
+ * 功能描述: <br>
+ * <p>
+ *  <系统日志业务实现>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 00:55
+ * @version 1.0.0
  */
 @Slf4j
 @Service

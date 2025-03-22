@@ -105,6 +105,16 @@
             <groupId>com.xll.frame.starter</groupId>
             <artifactId>xll-frame-starter-json-jackson</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-cache-jetcache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-captcha-graphic</artifactId>
+        </dependency>
     </dependencies>
 
 
