@@ -1,0 +1,39 @@
+package com.xll.frame.starter.core.util;
+
+import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.TypeUtil;
+
+import java.lang.reflect.Type;
+
+/**
+ * 功能描述: <br>
+ * <p>
+ *  <类工具类>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/2/6 21:00
+ * @version 1.0.0
+ */
+public class ClassUtils {
+
+    private ClassUtils() {
+    }
+
+    /**
+     * 获得给定类的所有泛型参数
+     *
+     * @param clazz 被检查的类，必须是已经确定泛型类型的类
+     * @return {@link Class}[]
+     */
+    public static Class<?>[] getTypeArguments(Class<?> clazz) {
+        final Type[] typeArguments = TypeUtil.getTypeArguments(clazz);
+        if (ArrayUtil.isEmpty(typeArguments)) {
+            return new Class[0];
+        }
+        final Class<?>[] classes = new Class<?>[typeArguments.length];
+        for (int i = 0; i < typeArguments.length; i++) {
+            classes[i] = TypeUtil.getClass(typeArguments[i]);
+        }
+        return classes;
+    }
+}

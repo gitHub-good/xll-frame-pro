@@ -1,0 +1,67 @@
+package com.xll.frame.starter.extension.crud.core.annotation;
+
+import java.lang.annotation.*;
+
+/**
+ * 功能描述: <br>
+ * <p>
+ *  <树结构字段>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/2/16 20:04
+ * @version 1.0.0
+ */
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface TreeField {
+
+    /**
+     * ID 字段名
+     *
+     * @return ID 字段名
+     */
+    String value() default "key";
+
+    /**
+     * 父 ID 字段名
+     *
+     * @return 父 ID 字段名
+     */
+    String parentIdKey() default "parentId";
+
+    /**
+     * 名称字段名
+     *
+     * @return 名称字段名
+     */
+    String nameKey() default "title";
+
+    /**
+     * 排序字段名
+     *
+     * @return 排序字段名
+     */
+    String weightKey() default "sort";
+
+    /**
+     * 子列表字段名
+     *
+     * @return 子列表字段名
+     */
+    String childrenKey() default "children";
+
+    /**
+     * 递归深度（< 0 不限制）
+     *
+     * @return 递归深度
+     */
+    int deep() default -1;
+
+    /**
+     * 根节点 ID
+     *
+     * @return 根节点 ID
+     */
+    long rootId() default 0L;
+}

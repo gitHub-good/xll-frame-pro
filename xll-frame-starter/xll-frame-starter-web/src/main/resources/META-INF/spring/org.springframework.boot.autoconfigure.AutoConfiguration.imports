@@ -1,0 +1,4 @@
+com.xll.frame.starter.web.autoconfigure.mvc.WebMvcAutoConfiguration
+com.xll.frame.starter.web.autoconfigure.cors.CorsAutoConfiguration
+com.xll.frame.starter.web.autoconfigure.trace.TraceAutoConfiguration
+com.xll.frame.starter.web.autoconfigure.xss.XssAutoConfiguration

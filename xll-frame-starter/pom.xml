@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.xll.frame.starter</groupId>
+        <artifactId>xll-frame-starter-bom</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>./xll-frame-starter-bom</relativePath>
+    </parent>
+    <artifactId>xll-frame-starter</artifactId>
+    <packaging>pom</packaging>
+    <version>${version}</version>
+
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+        <module>xll-frame-starter-bom</module>
+        <module>xll-frame-starter-core</module>
+        <module>xll-frame-starter-data</module>
+        <module>xll-frame-starter-security</module>
+        <module>xll-frame-starter-web</module>
+        <module>xll-frame-starter-json</module>
+        <module>xll-frame-starter-api-doc</module>
+        <module>xll-frame-starter-cache</module>
+        <module>xll-frame-starter-extension</module>
+        <module>xll-frame-starter-extension/xll-frame-starter-extension-crud</module>
+        <module>xll-frame-starter-file</module>
+        <module>xll-frame-starter-auth</module>
+        <module>xll-starter-mns</module>
+        <module>xll-frame-starter-log</module>
+    </modules>
+
+</project>

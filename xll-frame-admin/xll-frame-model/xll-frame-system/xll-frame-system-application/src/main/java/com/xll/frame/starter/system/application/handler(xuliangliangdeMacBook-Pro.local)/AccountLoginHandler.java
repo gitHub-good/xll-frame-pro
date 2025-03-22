@@ -1,0 +1,108 @@
+package com.xll.frame.starter.system.application.handler;
+
+import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.extra.servlet.JakartaServletUtil;
+import com.xll.frame.starter.cache.redisson.util.RedisUtils;
+import com.xll.frame.starter.common.constant.CacheConstants;
+import com.xll.frame.starter.common.constant.SysConstants;
+import com.xll.frame.starter.common.util.SecureUtils;
+import com.xll.frame.starter.core.util.ExceptionUtils;
+import com.xll.frame.starter.core.validation.CheckUtils;
+import com.xll.frame.starter.core.validation.ValidationUtils;
+import com.xll.frame.starter.system.application.AbstractLoginHandler;
+import com.xll.frame.starter.system.infrastructure.auth.enums.AuthTypeEnum;
+import com.xll.frame.starter.system.infrastructure.auth.model.req.AccountLoginReq;
+import com.xll.frame.starter.system.infrastructure.auth.model.resp.LoginResp;
+import com.xll.frame.starter.system.domain.system.enums.PasswordPolicyEnum;
+import com.xll.frame.starter.system.infrastructure.model.entity.UserDO;
+import com.xll.frame.starter.system.infrastructure.model.resp.ClientResp;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+
+import java.time.Duration;
+
+/**
+ * 账号登录处理器
+ *
+ * @author KAI
+ * @author Charles7c
+ * @since 2024/12/22 14:58
+ */
+@Component
+@RequiredArgsConstructor
+public class AccountLoginHandler extends AbstractLoginHandler<AccountLoginReq> {
+
+    private final PasswordEncoder passwordEncoder;
+
+    @Override
+    public LoginResp login(AccountLoginReq req, ClientResp client, HttpServletRequest request) {
+        // 解密密码
+        String rawPassword = ExceptionUtils.exToNull(() -> SecureUtils.decryptByRsaPrivateKey(req.getPassword()));
+        ValidationUtils.throwIfBlank(rawPassword, "密码解密失败");
+        // 验证用户名密码
+        String username = req.getUsername();
+        UserDO user = userService.getByUsername(username);
+        boolean isError = ObjectUtil.isNull(user) || !passwordEncoder.matches(rawPassword, user.getPassword());
+        // 检查账号锁定状态
+        this.checkUserLocked(req.getUsername(), request, isError);
+        ValidationUtils.throwIf(isError, "用户名或密码错误");
+        // 检查用户状态
+        super.checkUserStatus(user);
+        // 执行认证
+        String token = this.authenticate(user, client);
+        return LoginResp.builder().token(token).build();
+    }
+
+    @Override
+    public void preLogin(AccountLoginReq req, ClientResp client, HttpServletRequest request) {
+        super.preLogin(req, client, request);
+        // 校验验证码
+        int loginCaptchaEnabled = optionService.getValueByCode2Int("LOGIN_CAPTCHA_ENABLED");
+        if (SysConstants.YES.equals(loginCaptchaEnabled)) {
+            ValidationUtils.throwIfBlank(req.getCaptcha(), "验证码不能为空");
+            ValidationUtils.throwIfBlank(req.getUuid(), "验证码标识不能为空");
+            String captchaKey = CacheConstants.CAPTCHA_KEY_PREFIX + req.getUuid();
+            String captcha = RedisUtils.get(captchaKey);
+            ValidationUtils.throwIfBlank(captcha, CAPTCHA_EXPIRED);
+            RedisUtils.delete(captchaKey);
+            ValidationUtils.throwIfNotEqualIgnoreCase(req.getCaptcha(), captcha, CAPTCHA_ERROR);
+        }
+    }
+
+    @Override
+    public AuthTypeEnum getAuthType() {
+        return AuthTypeEnum.ACCOUNT;
+    }
+
+    /**
+     * 检测用户是否已被锁定
+     *
+     * @param username 用户名
+     * @param request  请求对象
+     * @param isError  是否登录错误
+     */
+    private void checkUserLocked(String username, HttpServletRequest request, boolean isError) {
+        // 不锁定
+        int maxErrorCount = optionService.getValueByCode2Int(PasswordPolicyEnum.PASSWORD_ERROR_LOCK_COUNT.name());
+        if (maxErrorCount <= SysConstants.NO) {
+            return;
+        }
+        // 检测是否已被锁定
+        String key = CacheConstants.USER_PASSWORD_ERROR_KEY_PREFIX + RedisUtils.formatKey(username, JakartaServletUtil
+            .getClientIP(request));
+        int lockMinutes = optionService.getValueByCode2Int(PasswordPolicyEnum.PASSWORD_ERROR_LOCK_MINUTES.name());
+        Integer currentErrorCount = ObjectUtil.defaultIfNull(RedisUtils.get(key), 0);
+        CheckUtils.throwIf(currentErrorCount >= maxErrorCount, "账号锁定 {} 分钟，请稍后再试", lockMinutes);
+        // 登录成功清除计数
+        if (!isError) {
+            RedisUtils.delete(key);
+            return;
+        }
+        // 登录失败递增计数
+        currentErrorCount++;
+        RedisUtils.set(key, currentErrorCount, Duration.ofMinutes(lockMinutes));
+        CheckUtils.throwIf(currentErrorCount >= maxErrorCount, "密码错误已达 {} 次，账号锁定 {} 分钟", maxErrorCount, lockMinutes);
+    }
+}

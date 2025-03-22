@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.xll.frame.starter</groupId>
+        <artifactId>xll-frame-admin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>xll-frame-common</artifactId>
+    <description>服务公共模块</description>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- CosId（通用、灵活、高性能的分布式 ID 生成器） -->
+        <dependency>
+            <groupId>me.ahoo.cosid</groupId>
+            <artifactId>cosid-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>me.ahoo.cosid</groupId>
+            <artifactId>cosid-spring-redis</artifactId>
+        </dependency>
+
+        <!-- SMS4J -->
+        <dependency>
+            <groupId>org.dromara.sms4j</groupId>
+            <artifactId>sms4j-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- X File Storage -->
+        <dependency>
+            <groupId>org.dromara.x-file-storage</groupId>
+            <artifactId>x-file-storage-spring</artifactId>
+        </dependency>
+        <!-- Amazon S3 -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+        </dependency>
+
+        <!-- FreeMarker（模板引擎） -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+
+        <!-- MySQL Java 驱动 -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+        </dependency>
+
+        <!-- Frame Starter 扩展模块 - CURD（增删改查） -->
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-extension-crud-mp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-auth-satoken</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-extension-data-permission-mp</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-starter-mns-websocket</artifactId>
+        </dependency>
+
+        <!-- Frame Starter 安全模块 - 限流器 -->
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-security-limiter</artifactId>
+        </dependency>
+        <!-- Frame Starter 安全模块 - 加密 -->
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-security-crypto</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-security-mask</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-security-password</artifactId>
+        </dependency>
+
+        <!-- Frame Starter JSON 模块 - Jackson -->
+        <dependency>
+            <groupId>com.xll.frame.starter</groupId>
+            <artifactId>xll-frame-starter-json-jackson</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>

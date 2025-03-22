@@ -1,0 +1,4 @@
+com.xll.frame.starter.core.autoconfigure.project.ProjectAutoConfiguration
+com.xll.frame.starter.core.autoconfigure.ValidatorAutoConfiguration
+com.xll.frame.starter.core.autoconfigure.threadpool.ThreadPoolAutoConfiguration
+com.xll.frame.starter.core.autoconfigure.threadpool.AsyncAutoConfiguration

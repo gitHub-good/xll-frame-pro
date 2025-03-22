@@ -1,0 +1,53 @@
+package com.xll.frame.starter.extension.data.permission.core.annotation;
+
+import java.lang.annotation.*;
+
+/**
+ * 功能描述: <br>
+ * <p>
+ *  <数据权限注解>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/2/23 16:25
+ * @version 1.0.0
+ */
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface DataPermission {
+
+    /**
+     * 表别名
+     */
+    String tableAlias() default "";
+
+    /**
+     * ID
+     */
+    String id() default "id";
+
+    /**
+     * 部门 ID
+     */
+    String deptId() default "dept_id";
+
+    /**
+     * 用户 ID
+     */
+    String userId() default "create_user";
+
+    /**
+     * 角色 ID（角色和部门关联表）
+     */
+    String roleId() default "role_id";
+
+    /**
+     * 部门表别名
+     */
+    String deptTableAlias() default "sys_dept";
+
+    /**
+     * 角色和部门关联表别名
+     */
+    String roleDeptTableAlias() default "sys_role_dept";
+}
