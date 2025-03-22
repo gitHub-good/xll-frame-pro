@@ -5,12 +5,12 @@ import com.xll.frame.starter.core.validation.ValidationUtils;
 import com.xll.frame.starter.extension.crud.core.annotation.CrudApi;
 import com.xll.frame.starter.extension.crud.core.annotation.CrudRequestMapping;
 import com.xll.frame.starter.extension.crud.core.enums.Api;
-import com.xll.frame.starter.system.domain.system.NoticeService;
-import com.xll.frame.starter.system.infrastructure.enums.NoticeScopeEnum;
-import com.xll.frame.starter.system.infrastructure.model.query.NoticeQuery;
-import com.xll.frame.starter.system.infrastructure.model.req.NoticeReq;
-import com.xll.frame.starter.system.infrastructure.model.resp.NoticeDetailResp;
-import com.xll.frame.starter.system.infrastructure.model.resp.NoticeResp;
+import com.xll.frame.system.domain.NoticeService;
+import com.xll.frame.system.infrastructure.enums.NoticeScopeEnum;
+import com.xll.frame.system.infrastructure.model.query.NoticeQuery;
+import com.xll.frame.system.infrastructure.model.req.NoticeReq;
+import com.xll.frame.system.infrastructure.model.resp.NoticeDetailResp;
+import com.xll.frame.system.infrastructure.model.resp.NoticeResp;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RestController;
 

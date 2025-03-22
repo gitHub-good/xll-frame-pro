@@ -6,18 +6,13 @@ import com.xll.frame.starter.common.context.UserContextHolder;
 import com.xll.frame.starter.common.util.SecureUtils;
 import com.xll.frame.starter.core.util.ExceptionUtils;
 import com.xll.frame.starter.core.validation.ValidationUtils;
-import com.xll.frame.starter.system.domain.system.UserService;
-import com.xll.frame.starter.system.infrastructure.enums.SocialSourceEnum;
-import com.xll.frame.starter.system.infrastructure.model.entity.UserSocialDO;
-import com.xll.frame.starter.system.infrastructure.model.req.user.UserBasicInfoUpdateReq;
-import com.xll.frame.starter.system.infrastructure.model.req.user.UserEmailUpdateRequest;
-import com.xll.frame.starter.system.infrastructure.model.req.user.UserPasswordUpdateReq;
-import com.xll.frame.starter.system.infrastructure.model.req.user.UserPhoneUpdateReq;
-import com.xll.frame.starter.system.infrastructure.model.resp.AvatarResp;
-import com.xll.frame.starter.system.infrastructure.model.resp.user.UserSocialBindResp;
+import com.xll.frame.system.domain.UserService;
+import com.xll.frame.system.infrastructure.model.req.user.UserBasicInfoUpdateReq;
+import com.xll.frame.system.infrastructure.model.req.user.UserEmailUpdateRequest;
+import com.xll.frame.system.infrastructure.model.req.user.UserPasswordUpdateReq;
+import com.xll.frame.system.infrastructure.model.req.user.UserPhoneUpdateReq;
+import com.xll.frame.system.infrastructure.model.resp.AvatarResp;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * 功能描述: <br>

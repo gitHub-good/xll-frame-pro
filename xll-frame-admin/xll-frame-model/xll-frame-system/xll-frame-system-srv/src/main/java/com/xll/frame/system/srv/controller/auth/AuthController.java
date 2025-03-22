@@ -6,14 +6,13 @@ import cn.hutool.core.bean.BeanUtil;
 import com.xll.frame.starter.common.context.UserContext;
 import com.xll.frame.starter.common.context.UserContextHolder;
 import com.xll.frame.starter.log.core.annotation.Log;
-import com.xll.frame.starter.system.application.auth.AuthService;
-import com.xll.frame.starter.system.domain.system.UserService;
-import com.xll.frame.starter.system.infrastructure.auth.model.req.LoginReq;
-import com.xll.frame.starter.system.infrastructure.auth.model.resp.LoginResp;
-import com.xll.frame.starter.system.infrastructure.auth.model.resp.RouteResp;
-import com.xll.frame.starter.system.infrastructure.auth.model.resp.SocialAuthAuthorizeResp;
-import com.xll.frame.starter.system.infrastructure.auth.model.resp.UserInfoResp;
-import com.xll.frame.starter.system.infrastructure.model.resp.user.UserDetailResp;
+import com.xll.frame.system.application.auth.AuthService;
+import com.xll.frame.system.domain.UserService;
+import com.xll.frame.system.infrastructure.auth.model.req.LoginReq;
+import com.xll.frame.system.infrastructure.auth.model.resp.LoginResp;
+import com.xll.frame.system.infrastructure.auth.model.resp.RouteResp;
+import com.xll.frame.system.infrastructure.auth.model.resp.UserInfoResp;
+import com.xll.frame.system.infrastructure.model.resp.user.UserDetailResp;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -26,10 +25,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 认证 API
- *
- * @author Charles7c
- * @since 2022/12/21 20:37
+ * 功能描述: <br>
+ * <p>
+ *  <认证 API>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 02:28
+ * @version 1.0.0
  */
 @Tag(name = "认证 API")
 @Log(module = "登录")

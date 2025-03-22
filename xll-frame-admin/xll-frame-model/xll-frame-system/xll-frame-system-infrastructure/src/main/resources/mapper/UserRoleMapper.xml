@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xll.frame.starter.system.infrastructure.mapper.UserRoleMapper">
+<mapper namespace="com.xll.frame.system.infrastructure.mapper.UserRoleMapper">
 
-    <select id="selectUserPage" resultType="top.continew.admin.system.model.resp.role.RoleUserResp">
+    <select id="selectUserPage" resultType="com.xll.frame.system.infrastructure.model.resp.role.RoleUserResp">
         SELECT
             t1.*,
             t2.nickname,

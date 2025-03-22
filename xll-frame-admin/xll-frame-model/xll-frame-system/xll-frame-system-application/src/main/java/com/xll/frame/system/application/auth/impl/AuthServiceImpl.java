@@ -1,0 +1,112 @@
+package com.xll.frame.system.application.auth.impl;
+
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.lang.tree.Tree;
+import cn.hutool.core.lang.tree.TreeNodeConfig;
+import cn.hutool.core.lang.tree.TreeUtil;
+import com.xll.frame.starter.common.constant.SysConstants;
+import com.xll.frame.starter.common.enums.DisEnableStatusEnum;
+import com.xll.frame.starter.core.validation.ValidationUtils;
+import com.xll.frame.starter.extension.crud.core.annotation.TreeField;
+import com.xll.frame.starter.extension.crud.core.autoconfigure.CrudProperties;
+import com.xll.frame.system.application.LoginHandlerFactory;
+import com.xll.frame.system.application.auth.AuthService;
+import com.xll.frame.system.domain.ClientService;
+import com.xll.frame.system.domain.MenuService;
+import com.xll.frame.system.domain.RoleService;
+import com.xll.frame.system.infrastructure.auth.LoginHandler;
+import com.xll.frame.system.infrastructure.auth.enums.AuthTypeEnum;
+import com.xll.frame.system.infrastructure.auth.model.req.LoginReq;
+import com.xll.frame.system.infrastructure.auth.model.resp.LoginResp;
+import com.xll.frame.system.infrastructure.auth.model.resp.RouteResp;
+import com.xll.frame.system.infrastructure.enums.MenuTypeEnum;
+import com.xll.frame.system.infrastructure.model.resp.ClientResp;
+import com.xll.frame.system.infrastructure.model.resp.MenuResp;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * 功能描述: <br>
+ * <p>
+ *  <认证业务实现>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/2/23 17:26
+ * @version 1.0.0
+ */
+@Service
+@RequiredArgsConstructor
+public class AuthServiceImpl implements AuthService {
+
+    private final LoginHandlerFactory loginHandlerFactory;
+    private final ClientService clientService;
+    private final RoleService roleService;
+    private final MenuService menuService;
+    private final CrudProperties crudProperties;
+
+    @Override
+    public LoginResp login(LoginReq req, HttpServletRequest request) {
+        AuthTypeEnum authType = req.getAuthType();
+        // 校验客户端
+        ClientResp client = clientService.getByClientId(req.getClientId());
+        ValidationUtils.throwIfNull(client, "客户端不存在");
+        ValidationUtils.throwIf(DisEnableStatusEnum.DISABLE.equals(client.getStatus()), "客户端已禁用");
+        ValidationUtils.throwIf(!client.getAuthType().contains(authType.getValue()), "该客户端暂未授权 [{}] 认证", authType
+            .getDescription());
+        // 获取处理器
+        LoginHandler<LoginReq> loginHandler = loginHandlerFactory.getHandler(authType);
+        // 登录前置处理
+        loginHandler.preLogin(req, client, request);
+        // 登录
+        LoginResp loginResp = loginHandler.login(req, client, request);
+        // 登录后置处理
+        loginHandler.postLogin(req, client, request);
+        return loginResp;
+    }
+
+    @Override
+    public List<RouteResp> buildRouteTree(Long userId) {
+        Set<String> roleCodeSet = roleService.listCodeByUserId(userId);
+        if (CollUtil.isEmpty(roleCodeSet)) {
+            return new ArrayList<>(0);
+        }
+        // 查询菜单列表
+        Set<MenuResp> menuSet = new LinkedHashSet<>();
+        if (roleCodeSet.contains(SysConstants.SUPER_ROLE_CODE)) {
+            menuSet.addAll(menuService.listAll());
+        } else {
+            roleCodeSet.forEach(roleCode -> menuSet.addAll(menuService.listByRoleCode(roleCode)));
+        }
+        List<MenuResp> menuList = menuSet.stream().filter(m -> !MenuTypeEnum.BUTTON.equals(m.getType())).toList();
+        if (CollUtil.isEmpty(menuList)) {
+            return new ArrayList<>(0);
+        }
+        // 构建路由树
+        TreeField treeField = MenuResp.class.getDeclaredAnnotation(TreeField.class);
+        TreeNodeConfig treeNodeConfig = crudProperties.getTree().genTreeNodeConfig(treeField);
+        List<Tree<Long>> treeList = TreeUtil.build(menuList, treeField.rootId(), treeNodeConfig, (m, tree) -> {
+            tree.setId(m.getId());
+            tree.setParentId(m.getParentId());
+            tree.setName(m.getTitle());
+            tree.setWeight(m.getSort());
+            tree.putExtra("type", m.getType().getValue());
+            tree.putExtra("path", m.getPath());
+            tree.putExtra("name", m.getName());
+            tree.putExtra("component", m.getComponent());
+            tree.putExtra("redirect", m.getRedirect());
+            tree.putExtra("icon", m.getIcon());
+            tree.putExtra("isExternal", m.getIsExternal());
+            tree.putExtra("isCache", m.getIsCache());
+            tree.putExtra("isHidden", m.getIsHidden());
+            tree.putExtra("permission", m.getPermission());
+        });
+        return BeanUtil.copyToList(treeList, RouteResp.class);
+    }
+}

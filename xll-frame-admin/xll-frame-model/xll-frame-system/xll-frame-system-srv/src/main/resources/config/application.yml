@@ -1,7 +1,7 @@
 --- ### 项目配置
 project:
   # 名称
-  name: ContiNew Admin
+  name: frame Admin
   # 应用名称
   app-name: frame-admin
   # 版本
@@ -9,7 +9,7 @@ project:
   # 描述
   description: 持续迭代优化的前后端分离中后台管理系统框架，开箱即用，持续提供舒适的开发体验。
   # 基本包
-  base-package: com.xll.frame
+  base-package: com.xll.frame.system
   ## 作者信息配置
   contact:
     name: frame
@@ -95,15 +95,7 @@ springdoc:
     - group: monitor
       display-name: 系统监控
       packages-to-scan: ${project.base-package}.controller.monitor
-    - group: schedule
-      display-name: 任务调度
-      packages-to-scan: ${project.base-package}.controller.schedule
-    - group: open
-      display-name: 能力开放
-      packages-to-scan: ${project.base-package}.controller.open
-    - group: code
-      display-name: 代码生成
-      packages-to-scan: ${project.base-package}.controller.code
+
   ## 组件配置
   components:
     # 鉴权配置

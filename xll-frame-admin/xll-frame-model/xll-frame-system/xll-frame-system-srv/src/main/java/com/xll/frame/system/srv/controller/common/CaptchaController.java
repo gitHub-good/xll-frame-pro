@@ -10,8 +10,8 @@ import com.xll.frame.starter.common.config.properties.CaptchaProperties;
 import com.xll.frame.starter.common.constant.CacheConstants;
 import com.xll.frame.starter.common.constant.SysConstants;
 import com.xll.frame.starter.log.core.annotation.Log;
-import com.xll.frame.starter.system.domain.system.OptionService;
-import com.xll.frame.starter.system.infrastructure.auth.model.resp.CaptchaResp;
+import com.xll.frame.system.domain.OptionService;
+import com.xll.frame.system.infrastructure.auth.model.resp.CaptchaResp;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -20,16 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-/**
- * 验证码 API
- *
- * @author Charles7c
- * @since 2022/12/11 14:00
- */
 @Tag(name = "验证码 API")
 @SaIgnore
 @Validated

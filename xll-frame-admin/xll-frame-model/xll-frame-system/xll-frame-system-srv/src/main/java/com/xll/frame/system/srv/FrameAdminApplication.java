@@ -19,6 +19,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 /**
@@ -31,13 +32,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 1.0.0
  */
 @Slf4j
-@EnableFileStorage
-@EnableMethodCache(basePackages = "top.frame.admin")
+@EnableMethodCache(basePackages = "com.xll.frame")
 @EnableGlobalResponse
 @EnableCrudRestController
 @RestController
 @SpringBootApplication
 @RequiredArgsConstructor
+@ComponentScan(basePackages = {"com.xll.frame.system","com.xll.frame.starter"})
 public class FrameAdminApplication implements ApplicationRunner {
 
     private final ProjectProperties projectProperties;

@@ -1,0 +1,54 @@
+package com.xll.frame.system.infrastructure.model.entity;
+
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+/**
+ * 功能描述: <br>
+ * <p>
+ *  <用户历史密码实体>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 00:34
+ * @version 1.0.0
+ */
+@Data
+@NoArgsConstructor
+@TableName("sys_user_password_history")
+public class UserPasswordHistoryDO implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * ID
+     */
+    @TableId(type = IdType.ASSIGN_ID)
+    private Long id;
+
+    /**
+     * 用户 ID
+     */
+    private Long userId;
+
+    /**
+     * 密码
+     */
+    private String password;
+
+    /**
+     * 创建时间
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
+
+    public UserPasswordHistoryDO(Long userId, String password) {
+        this.userId = userId;
+        this.password = password;
+    }
+}

@@ -9,10 +9,10 @@ import com.xll.frame.starter.core.validation.ValidationUtils;
 import com.xll.frame.starter.extension.crud.core.annotation.CrudApi;
 import com.xll.frame.starter.extension.crud.core.annotation.CrudRequestMapping;
 import com.xll.frame.starter.extension.crud.core.enums.Api;
-import com.xll.frame.starter.system.domain.system.MenuService;
-import com.xll.frame.starter.system.infrastructure.model.query.MenuQuery;
-import com.xll.frame.starter.system.infrastructure.model.req.MenuReq;
-import com.xll.frame.starter.system.infrastructure.model.resp.MenuResp;
+import com.xll.frame.system.domain.MenuService;
+import com.xll.frame.system.infrastructure.model.query.MenuQuery;
+import com.xll.frame.system.infrastructure.model.req.MenuReq;
+import com.xll.frame.system.infrastructure.model.resp.MenuResp;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RestController;
 

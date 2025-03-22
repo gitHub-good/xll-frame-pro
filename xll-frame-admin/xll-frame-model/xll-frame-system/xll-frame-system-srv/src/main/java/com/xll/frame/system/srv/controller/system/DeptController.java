@@ -3,10 +3,10 @@ package com.xll.frame.system.srv.controller.system;
 import com.xll.frame.starter.common.controller.BaseController;
 import com.xll.frame.starter.extension.crud.core.annotation.CrudRequestMapping;
 import com.xll.frame.starter.extension.crud.core.enums.Api;
-import com.xll.frame.starter.system.domain.system.DeptService;
-import com.xll.frame.starter.system.infrastructure.model.query.DeptQuery;
-import com.xll.frame.starter.system.infrastructure.model.req.DeptReq;
-import com.xll.frame.starter.system.infrastructure.model.resp.DeptResp;
+import com.xll.frame.system.domain.DeptService;
+import com.xll.frame.system.infrastructure.model.query.DeptQuery;
+import com.xll.frame.system.infrastructure.model.req.DeptReq;
+import com.xll.frame.system.infrastructure.model.resp.DeptResp;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RestController;
 
