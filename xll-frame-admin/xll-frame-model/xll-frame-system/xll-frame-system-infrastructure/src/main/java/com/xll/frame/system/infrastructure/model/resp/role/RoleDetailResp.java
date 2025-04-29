@@ -1,19 +1,35 @@
-package com.xll.frame.system.infrastructure.model.resp.role;
+package com.xll.frame.system.domain.assemble;
 
+import cn.crane4j.annotation.AssembleMethod;
+import cn.crane4j.annotation.ContainerMethod;
+import cn.crane4j.annotation.MappingType;
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.xll.frame.starter.common.enums.DataScopeEnum;
 import com.xll.frame.starter.common.model.resp.BaseDetailResp;
 import com.xll.frame.starter.file.excel.converter.ExcelBaseEnumConverter;
+import com.xll.frame.system.domain.RoleDeptService;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.util.List;
 
+/**
+ * 功能描述: <br>
+ * <p>
+ *  <角色详情信息>
+ * </p>
+ * @author xuliangliang
+ * @since 2025/3/23 13:45
+ * @version 1.0.0
+ */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ExcelIgnoreUnannotated
 @Schema(description = "角色详情信息")
+@AssembleMethod(key = "id", prop = ":deptIds", targetType = RoleDeptService.class, method = @ContainerMethod(bindMethod = "listDeptIdByRoleId", type = MappingType.ORDER_OF_KEYS))
 public class RoleDetailResp extends BaseDetailResp {
 
     @Serial

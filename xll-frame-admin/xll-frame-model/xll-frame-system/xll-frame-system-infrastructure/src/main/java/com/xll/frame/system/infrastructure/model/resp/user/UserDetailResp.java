@@ -1,6 +1,9 @@
-package com.xll.frame.system.infrastructure.model.resp.user;
+package com.xll.frame.system.domain.assemble;
 
 import cn.crane4j.annotation.Assemble;
+import cn.crane4j.annotation.AssembleMethod;
+import cn.crane4j.annotation.ContainerMethod;
+import cn.crane4j.annotation.Mapping;
 import cn.crane4j.annotation.condition.ConditionOnExpression;
 import cn.crane4j.core.executor.handler.ManyToManyAssembleOperationHandler;
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
@@ -13,6 +16,8 @@ import com.xll.frame.starter.common.model.resp.BaseDetailResp;
 import com.xll.frame.starter.file.excel.converter.ExcelBaseEnumConverter;
 import com.xll.frame.starter.file.excel.converter.ExcelListConverter;
 import com.xll.frame.starter.security.crypto.annotation.FieldEncrypt;
+import com.xll.frame.system.domain.DeptService;
+import com.xll.frame.system.infrastructure.model.resp.DeptResp;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -63,6 +68,7 @@ public class UserDetailResp extends BaseDetailResp {
      */
     @Schema(description = "部门 ID", example = "5")
     @ConditionOnExpression("#target.deptName == null")
+    @AssembleMethod(props = @Mapping(src = "name", ref = "deptName"), targetType = DeptService.class, method = @ContainerMethod(bindMethod = "get", resultType = DeptResp.class))
     @ExcelProperty(value = "部门 ID", order = 6)
     private Long deptId;
 
