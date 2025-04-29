@@ -1,4 +1,4 @@
-package com.xll.frame.system.domain;
+package com.xll.frame.system.infrastructure.service;
 
 import com.xll.frame.starter.extension.crud.core.model.query.PageQuery;
 import com.xll.frame.starter.extension.crud.mp.model.resp.PageResp;

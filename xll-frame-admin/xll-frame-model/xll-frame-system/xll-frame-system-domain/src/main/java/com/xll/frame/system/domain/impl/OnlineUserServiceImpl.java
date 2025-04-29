@@ -14,7 +14,7 @@ import com.xll.frame.starter.common.context.UserExtraContext;
 import com.xll.frame.starter.core.constant.StringConstants;
 import com.xll.frame.starter.extension.crud.core.model.query.PageQuery;
 import com.xll.frame.starter.extension.crud.mp.model.resp.PageResp;
-import com.xll.frame.system.domain.OnlineUserService;
+import com.xll.frame.system.infrastructure.service.OnlineUserService;
 import com.xll.frame.system.infrastructure.auth.model.query.OnlineUserQuery;
 import com.xll.frame.system.infrastructure.auth.model.resp.OnlineUserResp;
 import lombok.RequiredArgsConstructor;

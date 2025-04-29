@@ -5,7 +5,7 @@ import com.feiniaojin.gracefulresponse.api.ExcludeFromGracefulResponse;
 import com.xll.frame.starter.extension.crud.core.model.query.PageQuery;
 import com.xll.frame.starter.extension.crud.core.model.query.SortQuery;
 import com.xll.frame.starter.extension.crud.mp.model.resp.PageResp;
-import com.xll.frame.system.domain.LogService;
+import com.xll.frame.system.infrastructure.service.LogService;
 import com.xll.frame.system.infrastructure.model.query.LogQuery;
 import com.xll.frame.system.infrastructure.model.resp.log.LogDetailResp;
 import com.xll.frame.system.infrastructure.model.resp.log.LogResp;

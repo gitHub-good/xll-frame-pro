@@ -14,7 +14,7 @@ import com.xll.frame.starter.core.validation.CheckUtils;
 import com.xll.frame.starter.data.mp.util.QueryWrapperHelper;
 import com.xll.frame.starter.extension.crud.core.model.query.PageQuery;
 import com.xll.frame.starter.extension.crud.mp.model.resp.PageResp;
-import com.xll.frame.system.domain.UserRoleService;
+import com.xll.frame.system.infrastructure.service.UserRoleService;
 import com.xll.frame.system.infrastructure.model.entity.UserRoleDO;
 import com.xll.frame.system.infrastructure.model.query.RoleUserQuery;
 import com.xll.frame.system.infrastructure.model.resp.role.RoleUserResp;

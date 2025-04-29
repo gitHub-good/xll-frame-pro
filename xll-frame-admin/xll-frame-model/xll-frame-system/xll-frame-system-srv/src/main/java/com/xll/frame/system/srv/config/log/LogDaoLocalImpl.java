@@ -17,7 +17,7 @@ import com.xll.frame.starter.log.core.dao.LogDao;
 import com.xll.frame.starter.log.core.model.LogRecord;
 import com.xll.frame.starter.log.core.model.LogRequest;
 import com.xll.frame.starter.log.core.model.LogResponse;
-import com.xll.frame.system.domain.UserService;
+import com.xll.frame.system.infrastructure.service.UserService;
 import com.xll.frame.system.infrastructure.auth.enums.AuthTypeEnum;
 import com.xll.frame.system.infrastructure.auth.model.req.AccountLoginReq;
 import com.xll.frame.system.infrastructure.auth.model.req.EmailLoginReq;

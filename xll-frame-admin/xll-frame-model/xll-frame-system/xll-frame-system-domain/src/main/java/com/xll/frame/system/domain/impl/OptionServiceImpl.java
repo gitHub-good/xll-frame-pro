@@ -13,7 +13,7 @@ import com.xll.frame.starter.core.constant.StringConstants;
 import com.xll.frame.starter.core.validation.CheckUtils;
 import com.xll.frame.starter.core.validation.ValidationUtils;
 import com.xll.frame.starter.data.mp.util.QueryWrapperHelper;
-import com.xll.frame.system.domain.OptionService;
+import com.xll.frame.system.infrastructure.service.OptionService;
 import com.xll.frame.system.domain.enums.PasswordPolicyEnum;
 import com.xll.frame.system.infrastructure.enums.OptionCategoryEnum;
 import com.xll.frame.system.infrastructure.model.entity.OptionDO;

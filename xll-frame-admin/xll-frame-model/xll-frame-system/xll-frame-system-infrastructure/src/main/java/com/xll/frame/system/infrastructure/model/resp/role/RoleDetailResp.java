@@ -1,4 +1,4 @@
-package com.xll.frame.system.domain.assemble;
+package com.xll.frame.system.infrastructure.model.resp.role;
 
 import cn.crane4j.annotation.AssembleMethod;
 import cn.crane4j.annotation.ContainerMethod;
@@ -8,7 +8,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import com.xll.frame.starter.common.enums.DataScopeEnum;
 import com.xll.frame.starter.common.model.resp.BaseDetailResp;
 import com.xll.frame.starter.file.excel.converter.ExcelBaseEnumConverter;
-import com.xll.frame.system.domain.RoleDeptService;
+import com.xll.frame.system.infrastructure.service.RoleDeptService;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

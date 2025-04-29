@@ -2,7 +2,7 @@ package com.xll.frame.system.domain.impl;
 
 import com.xll.frame.starter.common.context.UserContextHolder;
 import com.xll.frame.starter.extension.crud.mp.service.BaseServiceImpl;
-import com.xll.frame.system.domain.NoticeService;
+import com.xll.frame.system.infrastructure.service.NoticeService;
 import com.xll.frame.system.infrastructure.model.entity.NoticeDO;
 import com.xll.frame.system.infrastructure.model.query.NoticeQuery;
 import com.xll.frame.system.infrastructure.model.req.NoticeReq;

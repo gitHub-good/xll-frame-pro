@@ -3,7 +3,7 @@ package com.xll.frame.system.srv.controller.system;
 import com.xll.frame.starter.common.controller.BaseController;
 import com.xll.frame.starter.extension.crud.core.annotation.CrudRequestMapping;
 import com.xll.frame.starter.extension.crud.core.enums.Api;
-import com.xll.frame.system.domain.DictService;
+import com.xll.frame.system.infrastructure.service.DictService;
 import com.xll.frame.system.infrastructure.model.query.DictQuery;
 import com.xll.frame.system.infrastructure.model.req.DictReq;
 import com.xll.frame.system.infrastructure.model.resp.DictResp;

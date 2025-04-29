@@ -2,7 +2,7 @@ package com.xll.frame.system.domain.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.xll.frame.system.domain.UserPasswordHistoryService;
+import com.xll.frame.system.infrastructure.service.UserPasswordHistoryService;
 import com.xll.frame.system.infrastructure.model.entity.UserPasswordHistoryDO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -9,7 +9,7 @@ import com.xll.frame.starter.common.enums.DisEnableStatusEnum;
 import com.xll.frame.starter.core.constant.StringConstants;
 import com.xll.frame.starter.core.validation.CheckUtils;
 import com.xll.frame.starter.extension.crud.mp.service.BaseServiceImpl;
-import com.xll.frame.system.domain.MenuService;
+import com.xll.frame.system.infrastructure.service.MenuService;
 import com.xll.frame.system.infrastructure.enums.MenuTypeEnum;
 import com.xll.frame.system.infrastructure.model.entity.MenuDO;
 import com.xll.frame.system.infrastructure.model.query.MenuQuery;

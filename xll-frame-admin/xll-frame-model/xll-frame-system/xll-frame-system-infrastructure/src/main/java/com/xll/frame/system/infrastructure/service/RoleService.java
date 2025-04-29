@@ -1,4 +1,4 @@
-package com.xll.frame.system.domain;
+package com.xll.frame.system.infrastructure.service;
 
 import com.xll.frame.starter.common.context.RoleContext;
 import com.xll.frame.starter.data.mp.service.IService;

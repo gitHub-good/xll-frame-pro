@@ -14,7 +14,7 @@ import com.xll.frame.starter.extension.crud.core.model.query.PageQuery;
 import com.xll.frame.starter.extension.crud.core.model.query.SortQuery;
 import com.xll.frame.starter.extension.crud.mp.model.resp.PageResp;
 import com.xll.frame.starter.file.excel.util.ExcelUtils;
-import com.xll.frame.system.domain.LogService;
+import com.xll.frame.system.infrastructure.service.LogService;
 import com.xll.frame.system.infrastructure.model.entity.LogDO;
 import com.xll.frame.system.infrastructure.model.query.LogQuery;
 import com.xll.frame.system.infrastructure.model.resp.log.LogDetailResp;

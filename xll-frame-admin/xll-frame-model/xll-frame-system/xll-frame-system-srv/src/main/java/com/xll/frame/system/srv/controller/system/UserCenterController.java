@@ -6,7 +6,7 @@ import com.xll.frame.starter.common.context.UserContextHolder;
 import com.xll.frame.starter.common.util.SecureUtils;
 import com.xll.frame.starter.core.util.ExceptionUtils;
 import com.xll.frame.starter.core.validation.ValidationUtils;
-import com.xll.frame.system.domain.UserService;
+import com.xll.frame.system.infrastructure.service.UserService;
 import com.xll.frame.system.infrastructure.model.req.user.UserBasicInfoUpdateReq;
 import com.xll.frame.system.infrastructure.model.req.user.UserEmailUpdateRequest;
 import com.xll.frame.system.infrastructure.model.req.user.UserPasswordUpdateReq;

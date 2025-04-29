@@ -2,7 +2,7 @@ package com.xll.frame.system.srv.config.log;
 
 import com.xll.frame.starter.log.core.annotation.ConditionalOnEnabledLog;
 import com.xll.frame.starter.log.core.dao.LogDao;
-import com.xll.frame.system.domain.UserService;
+import com.xll.frame.system.infrastructure.service.UserService;
 import com.xll.frame.system.infrastructure.mapper.LogMapper;
 import com.xll.frame.starter.web.autoconfigure.trace.TraceProperties;
 import org.springframework.context.annotation.Bean;

@@ -7,7 +7,7 @@ import com.alicp.jetcache.anno.Cached;
 import com.xll.frame.starter.common.constant.CacheConstants;
 import com.xll.frame.starter.core.validation.ValidationUtils;
 import com.xll.frame.starter.log.core.annotation.Log;
-import com.xll.frame.system.domain.DashboardService;
+import com.xll.frame.system.infrastructure.service.DashboardService;
 import com.xll.frame.system.infrastructure.model.resp.dashboard.DashboardAccessTrendResp;
 import com.xll.frame.system.infrastructure.model.resp.dashboard.DashboardChartCommonResp;
 import com.xll.frame.system.infrastructure.model.resp.dashboard.DashboardNoticeResp;

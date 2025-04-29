@@ -1,7 +1,7 @@
 package com.xll.frame.system.srv.controller.system;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import com.xll.frame.system.domain.OptionService;
+import com.xll.frame.system.infrastructure.service.OptionService;
 import com.xll.frame.system.infrastructure.model.query.OptionQuery;
 import com.xll.frame.system.infrastructure.model.req.OptionReq;
 import com.xll.frame.system.infrastructure.model.req.OptionResetValueReq;

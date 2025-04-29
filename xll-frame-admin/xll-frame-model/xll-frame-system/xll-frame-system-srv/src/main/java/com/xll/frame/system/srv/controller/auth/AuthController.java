@@ -7,7 +7,7 @@ import com.xll.frame.starter.common.context.UserContext;
 import com.xll.frame.starter.common.context.UserContextHolder;
 import com.xll.frame.starter.log.core.annotation.Log;
 import com.xll.frame.system.application.auth.AuthService;
-import com.xll.frame.system.domain.UserService;
+import com.xll.frame.system.infrastructure.service.UserService;
 import com.xll.frame.system.infrastructure.auth.model.req.LoginReq;
 import com.xll.frame.system.infrastructure.auth.model.resp.LoginResp;
 import com.xll.frame.system.infrastructure.auth.model.resp.RouteResp;

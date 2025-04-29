@@ -10,7 +10,7 @@ import com.xll.frame.starter.common.config.properties.CaptchaProperties;
 import com.xll.frame.starter.common.constant.CacheConstants;
 import com.xll.frame.starter.common.constant.SysConstants;
 import com.xll.frame.starter.log.core.annotation.Log;
-import com.xll.frame.system.domain.OptionService;
+import com.xll.frame.system.infrastructure.service.OptionService;
 import com.xll.frame.system.infrastructure.auth.model.resp.CaptchaResp;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

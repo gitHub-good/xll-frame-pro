@@ -2,7 +2,7 @@ package com.xll.frame.system.domain.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.xll.frame.starter.core.validation.CheckUtils;
-import com.xll.frame.system.domain.MessageUserService;
+import com.xll.frame.system.infrastructure.service.MessageUserService;
 import com.xll.frame.system.infrastructure.enums.MessageTypeEnum;
 import com.xll.frame.system.infrastructure.model.entity.MessageUserDO;
 import com.xll.frame.system.infrastructure.model.resp.MessageTypeUnreadResp;

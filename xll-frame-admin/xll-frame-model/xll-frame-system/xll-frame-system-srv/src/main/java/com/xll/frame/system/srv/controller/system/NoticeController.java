@@ -5,7 +5,7 @@ import com.xll.frame.starter.core.validation.ValidationUtils;
 import com.xll.frame.starter.extension.crud.core.annotation.CrudApi;
 import com.xll.frame.starter.extension.crud.core.annotation.CrudRequestMapping;
 import com.xll.frame.starter.extension.crud.core.enums.Api;
-import com.xll.frame.system.domain.NoticeService;
+import com.xll.frame.system.infrastructure.service.NoticeService;
 import com.xll.frame.system.infrastructure.enums.NoticeScopeEnum;
 import com.xll.frame.system.infrastructure.model.query.NoticeQuery;
 import com.xll.frame.system.infrastructure.model.req.NoticeReq;

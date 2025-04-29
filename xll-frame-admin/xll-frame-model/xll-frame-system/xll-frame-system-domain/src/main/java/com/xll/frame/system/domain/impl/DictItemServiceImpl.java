@@ -12,7 +12,7 @@ import com.xll.frame.starter.core.enums.BaseEnum;
 import com.xll.frame.starter.core.validation.CheckUtils;
 import com.xll.frame.starter.extension.crud.core.model.resp.LabelValueResp;
 import com.xll.frame.starter.extension.crud.mp.service.BaseServiceImpl;
-import com.xll.frame.system.domain.DictItemService;
+import com.xll.frame.system.infrastructure.service.DictItemService;
 import com.xll.frame.system.infrastructure.model.entity.DictItemDO;
 import com.xll.frame.system.infrastructure.model.query.DictItemQuery;
 import com.xll.frame.system.infrastructure.model.req.DictItemReq;

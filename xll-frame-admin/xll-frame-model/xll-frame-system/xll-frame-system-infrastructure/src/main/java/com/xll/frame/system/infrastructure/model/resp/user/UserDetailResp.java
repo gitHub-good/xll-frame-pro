@@ -1,4 +1,4 @@
-package com.xll.frame.system.domain.assemble;
+package com.xll.frame.system.infrastructure.model.resp.user;
 
 import cn.crane4j.annotation.Assemble;
 import cn.crane4j.annotation.AssembleMethod;
@@ -16,8 +16,8 @@ import com.xll.frame.starter.common.model.resp.BaseDetailResp;
 import com.xll.frame.starter.file.excel.converter.ExcelBaseEnumConverter;
 import com.xll.frame.starter.file.excel.converter.ExcelListConverter;
 import com.xll.frame.starter.security.crypto.annotation.FieldEncrypt;
-import com.xll.frame.system.domain.DeptService;
 import com.xll.frame.system.infrastructure.model.resp.DeptResp;
+import com.xll.frame.system.infrastructure.service.DeptService;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

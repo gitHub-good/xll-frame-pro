@@ -224,6 +224,6 @@ public class GlobalResponseAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[ContiNew Starter] - Auto Configuration 'Web-Global Response' completed initialization.");
+        log.debug("[Frame Starter] - Auto Configuration 'Web-Global Response' completed initialization.");
     }
 }

@@ -1,7 +1,7 @@
 package com.xll.frame.system.domain.impl;
 
 import cn.hutool.core.collection.CollUtil;
-import com.xll.frame.system.domain.RoleDeptService;
+import com.xll.frame.system.infrastructure.service.RoleDeptService;
 import com.xll.frame.system.infrastructure.model.entity.RoleDeptDO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

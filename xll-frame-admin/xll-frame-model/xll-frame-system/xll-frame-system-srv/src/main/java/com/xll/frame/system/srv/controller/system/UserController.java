@@ -11,7 +11,7 @@ import com.xll.frame.starter.extension.crud.core.annotation.CrudRequestMapping;
 import com.xll.frame.starter.extension.crud.core.enums.Api;
 import com.xll.frame.starter.extension.crud.core.model.resp.BaseIdResp;
 import com.xll.frame.starter.extension.crud.core.validation.CrudValidationGroup;
-import com.xll.frame.system.domain.UserService;
+import com.xll.frame.system.infrastructure.service.UserService;
 import com.xll.frame.system.infrastructure.model.query.UserQuery;
 import com.xll.frame.system.infrastructure.model.req.user.UserImportReq;
 import com.xll.frame.system.infrastructure.model.req.user.UserPasswordResetReq;

@@ -1,0 +1,33 @@
+version: 'v1.0.0'
+services:
+  nacos:
+    image: nacos/nacos-server:v2.3.0-slim
+    container_name: private-nacos
+    environment:
+      MODE: standalone
+      SPRING_DATASOURCE_PLATFORM: mysql
+      MYSQL_SERVICE_HOST: private-mysql
+      MYSQL_SERVICE_DB_NAME: nacos_config
+      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_USER: root
+      MYSQL_SERVICE_PASSWORD: xll.123
+    ports:
+      - "8848:8848"
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: private-mysql
+    image: mysql:8.0.31
+    environment:
+      - MYSQL_ROOT_PASSWORD=xll.123
+    ports:
+      - "3306:3306"
+
+  redis:
+    container_name: private-redis
+    image: redis
+    build:
+      context: ./redis
+    ports:
+      - "6379:6379"

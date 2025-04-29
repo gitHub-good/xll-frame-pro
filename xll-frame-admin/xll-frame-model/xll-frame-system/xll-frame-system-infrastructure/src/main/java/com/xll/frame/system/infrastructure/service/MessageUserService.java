@@ -1,4 +1,4 @@
-package com.xll.frame.system.domain;
+package com.xll.frame.system.infrastructure.service;
 
 import com.xll.frame.system.infrastructure.model.resp.MessageUnreadResp;
 
